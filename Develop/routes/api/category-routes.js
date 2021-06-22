@@ -1,9 +1,3 @@
-
-
-
-
-
-
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
@@ -47,6 +41,7 @@ router.get('/:id', (req, res) => {
         return;
       }
       res.json(dbCategoryData);
+      // I cahnged the db name will this affect it?
     })
     .catch(err => {
       console.log(err);
@@ -57,6 +52,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new category
   Category.create({
+    // what is RegExp doing ?
     category_name: RegExp.body.category_name
   })
   .then(dbCategoryData => {
