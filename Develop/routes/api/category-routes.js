@@ -41,7 +41,7 @@ router.get('/:id', (req, res) => {
         return;
       }
       res.json(dbCategoryData);
-      // I cahnged the db name will this affect it?
+      // I changed the db name will this affect it?
     })
     .catch(err => {
       console.log(err);
