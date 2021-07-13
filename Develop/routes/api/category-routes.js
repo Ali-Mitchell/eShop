@@ -52,8 +52,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new category
   Category.create({
-    // what is RegExp doing ?
-    category_name: RegExp.body.category_name
+    category_name:req.body.category_name
   })
   .then(dbCategoryData => {
     if(!dbCategoryData){
@@ -69,10 +68,12 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+  // this route keeps breaking 
   Category.update(req.body, {
     where: {
-      id:RegExp.params.id
+      // id:RegExp.params.id
+      id: req.params.id
+    
     }
   })
   .then(dbCategoryData => {
@@ -90,7 +91,22 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
-  Category.delete
-});
-
+    Category.delete(req.body, {
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(dbCategoryData => {
+      if(!dbCategoryData) {
+        res.status(404).json({message: 'No category found with this ID'});
+        return;
+      }
+      res.json(dbCategoryData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  });
+  
 module.exports = router;
