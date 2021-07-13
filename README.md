@@ -3,7 +3,7 @@
   
 
   ## Description
-  An application that uses MySql and Sequelize to create back end database of e commerce projects. This app contains routes to get, post, update and delete various pieces of data from the Database. 
+  An application that uses MySql and Sequelize to create back end database of e commerce products. This app contains routes to get, post, update and delete various pieces of data from the Database. 
   ## Table of Contents
   * [Description](#description)
   * [Installation](#installation)
